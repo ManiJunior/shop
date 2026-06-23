@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>سمارٹ کسان - ہوم پیج</title>
+    <link rel="stylesheet" href="fonts/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. CLEAN HEADER WITH SEARCH BAR -->
+    <header class="main-header">
+        <div class="header-top">
+            <div class="logo-area">
+                <i class="fas fa-leaf logo-icon"></i>
+                <span class="brand-name">Smart Kissan Smart Pakistan</span>
+            </div>
+            <div class="header-icons">
+                <div class="icon-btn cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cartCount">0</span>
+                </div>
+                <div class="icon-btn">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+            </div>
+        </div>
+        <!-- سرچ بار -->
+        <div class="search-container">
+            <input type="text" id="headerSearchInput" placeholder="Search...">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+
+        <!-- 2. AUTO-PLAY & SWIPE SLIDER -->
+        <section class="premium-slider-container">
+            <div class="slider-wrapper" id="sliderWrapper">
+                
+                <!-- سلائیڈ 1: موسم کی صورتحال -->
+                <div class="slide-card premium-promo-card">
+                    <div class="weather-info">
+                        <div class="weather-text">
+                            <span class="promo-badge">سیزنل الرٹ</span>
+                            <h3>ملتان: 32°C</h3>
+                            <p>صاف موسم اور ہلکی ہوا</p>
+                        </div>
+                        <img src="Pictures/gandamnews.jpg" alt="Weather" class="slider-picture">
+                    </div>
+                    <div class="slider-footer">
+                        <span>موسم کی تازہ ترین صورتحال</span>
+                    </div>
+                </div>
+
+                <!-- سلائیڈ 2: لائسنس رجسٹریشن -->
+                <div class="slide-card">
+                    <div class="weather-info">
+                        <div class="weather-text">
+                            <h3>پیسٹیسائیڈ لائسنس</h3>
+                            <p>نئے لائسنس کی رجسٹریشن کا آسان طریقہ جانیں</p>
+                        </div>
+                        <img src="https://i.imgur.com/2DhmtJ4.png" alt="License" class="slider-picture">
+                    </div>
+                    <div class="slider-footer">
+                        <span>محکمہ زراعت کی اہم خبر</span>
+                    </div>
+                </div>
+
+                <!-- سلائیڈ 3: فصلوں کے لیے مشورہ -->
+                <div class="slide-card">
+                    <div class="weather-info">
+                        <div class="weather-text">
+                            <h3>کپاس کی دیکھ بھال</h3>
+                            <p>اس ہفتے کپاس کو پانی دینے کا بہترین وقت ہے</p>
+                        </div>
+                        <i class="fas fa-seedling weather-icon" style="color: #27ae60;"></i>
+                    </div>
+                    <div class="slider-footer">
+                        <span>ماہرینِ زراعت کا مشورہ</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- نیچے والے نقطے (Dots Indicator) -->
+            <div class="dots-container">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </section>
+
+        <!-- 3. سروسز گریڈ -->
+        <section class="services-grid">
+            <a href="pesticide-license.html" class="service-item">
+                <div class="service-icon icon-blue"><i class="far fa-file-alt"></i></div>
+                <span>لائسنس</span>
+            </a>
+            <a href="company-reg.html" class="service-item">
+                <div class="service-icon icon-orange"><i class="briefcase fas fa-briefcase"></i></div>
+                <span>رجسٹریشن</span>
+            </a>
+            <a href="crops.html" class="service-item">
+                <div class="service-icon icon-green"><i class="fas fa-seedling"></i></div>
+                <span>فصلیں</span>
+            </a>
+            <a href="news.html" class="service-item">
+                <div class="service-icon icon-purple"><i class="far fa-newspaper"></i></div>
+                <span>خبریں</span>
+            </a>
+            <a href="news.html" class="service-item">
+                <div class="service-icon icon-purple"><i class="fas fa-ellipsis-h"></i></div>
+                <span>More</span>
+            </a>
+        </section>
+
+        <!-- 4. دکان کا نیا ہیڈر - صرف SHOP NOW ٹیکسٹ کے ساتھ -->
+        <div class="shop-premium-banner">
+            <a href="shop.html" class="banner-link">
+                <span>SHOP NOW</span>
+            </a>
+        </div>
+
+        <!-- 5. پروڈکٹس گریڈ سیکشن -->
+        <section class="products-grid">
+            <!-- پروڈکٹ کارڈ -->
+            <a href="shop.html" class="product-card" data-id="nativo-pesticide" data-cat="Pesticides">
+                <div class="img-box">
+                    <img src="Pictures/Roundup.jpg" alt="Nativo">
+                </div>
+                <h4 class="product-name">Nativo</h4>
+                <div class="product-footer">
+                    <!-- قیمتوں کا باکس -->
+                    <div class="price-box">
+                        <span class="product-old-price">RS 1,549</span>
+                        <span class="product-price">RS 1,250</span>
+                    </div>
+                    <!-- کارٹ بٹن -->
+                    <button class="minimal-add-btn"></button>
+                </div>
+            </a>
+
+            <a href="shop.html" class="product-card" data-id="Lamda-House Hold" data-cat="House Hold">
+                <div class="img-box">
+                    <img src="Pictures/Roundup.jpg" alt="Lamda">
+                </div>
+                <h4 class="product-name">Lamda</h4>
+                <div class="product-footer">
+                    <!-- قیمتوں کا باکس -->
+                    <div class="price-box">
+                        <span class="product-old-price">RS 1,549</span>
+                        <span class="product-price">RS 1,250</span>
+                    </div>
+                    <!-- کارٹ بٹن -->
+                    <button class="minimal-add-btn"></button>
+                </div>
+            </a>
+
+            <a href="shop.html" class="product-card" data-id="Lamda-House Hold" data-cat="House Hold">
+                <div class="img-box">
+                    <img src="Pictures/Roundup.jpg" alt="Lamda">
+                </div>
+                <h4 class="product-name">Lamda</h4>
+                <div class="product-footer">
+                    <!-- قیمتوں کا باکس -->
+                    <div class="price-box">
+                        <span class="product-old-price">RS 1,549</span>
+                        <span class="product-price">RS 1,250</span>
+                    </div>
+                    <!-- کارٹ بٹن -->
+                    <button class="minimal-add-btn"></button>
+                </div>
+            </a>
+
+            <a href="shop.html" class="product-card" data-id="Roundup-Pesticide" data-cat="Pesticide">
+                <div class="img-box">
+                    <img src="Pictures/Roundup.jpg" alt="Roundup">
+                </div>
+                <h4 class="product-name">Roundup</h4>
+                <div class="product-footer">
+                    <!-- قیمتوں کا باکس -->
+                    <div class="price-box">
+                        <span class="product-old-price">RS 1,549</span>
+                        <span class="product-price">RS 1,250</span>
+                    </div>
+                    <!-- کارٹ بٹن -->
+                    <button class="minimal-add-btn"></button>
+                </div>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- موبائل ایپ جیسا باٹم نیویگیشن بار -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="shop.html" class="nav-item">
+            <i class="fas fa-shopping-bag"></i>
+            <span>Shop</span>
+        </a>
+        <a href="social.html" class="nav-item">
+            <i class="fas fa-users"></i>
+            <span>Social+</span>
+        </a>
+        <a href="cart.html" class="nav-item">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Your Cart</span>
+            <span class="cartCount">0</span>
+        </a>
+        <a href="account.html" class="nav-item">
+            <i class="fas fa-user-circle"></i>
+            <span>Account</span>
+        </a>
+    </nav>
+    
+    <script src="main.js"></script>
+</body>
+</html>

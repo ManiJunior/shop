@@ -1,0 +1,476 @@
+/* ==========================================
+   🎯 جمیل نوری نستعلیق فونٹ فکس (تصویر files.JPG کے مطابق بالکل صحیح پاتھ)
+   ========================================== */
+@font-face {
+    font-family: 'Jameel Noori Nastaleeq';
+    /* Shop فولڈر سے باہر نکل کر fonts فولڈر کے اندر jameelfont.ttf فائل کو لوڈ کرنا */
+    src: url('../fonts/jameelfont.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ==========================================
+   جنرل ری سیٹ سیٹنگز
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+/* ہائی لائٹ ہونے والے لفظ کا اسٹائل */
+.highlight-word {
+    background-color: #ffeb3b !important;
+    color: #000 !important;
+    padding: 0 1px;
+    border-radius: 2px;
+}
+body {
+    font-family: 'Jameel Noori Nastaleeq', 'Segoe UI', Tahoma, sans-serif;
+    background-color: #ffffff;
+    color: #2c3e50;
+    direction: ltr;
+    padding-bottom: 80px;
+}
+
+/* ==========================================
+   ۱. ہیڈر اور سرچ بار
+   ========================================== */
+.main-header {
+    background-color: #ffffff;
+    padding: 12px 15px;
+    border-bottom: 1px solid #f2f4f5;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    color: #27ae60;
+    font-size: 22px;
+}
+
+.brand-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1c2833;
+}
+
+.header-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon-btn {
+    font-size: 20px;
+    color: #7f8c8d;
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-btn .cartCount {
+    position: absolute;
+    top: -5px;
+    left: -10px;
+    background-color: #e74c3c;
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 50%;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+}
+
+#headerSearchInput {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border: 1px solid #ebedef;
+    border-radius: 25px;
+    font-size: 14px;
+    outline: none;
+    background-color: #f8f9f9;
+    color: #2c3e50;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+#headerSearchInput:focus {
+    border-color: #27ae60;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(39, 174, 96, 0.08);
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: #95a5a6;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+/* ==========================================
+   ۲. بینر پٹی
+   ========================================== */
+.shop-premium-banner {
+    width: 100%;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+
+.banner-link {
+    width: 100%;
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+    box-shadow: 0 4px 15px rgba(56, 239, 125, 0.2);
+}
+
+/* ==========================================
+   ۳. کیٹیگری فلٹرز
+   ========================================== */
+.shop-container {
+    padding: 0 5px;
+}
+.category-filter-bar {
+    direction: ltr;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 2px 15px 2px; /* اوپر کا پیڈنگ تھوڑا بڑھایا ہے تاکہ اسکرول میں پیارا لگے */
+    scrollbar-width: none;
+
+    /* 🎯 نیا اسٹکی لاجک جو ہم نے ایڈ کیا ہے */
+    position: -webkit-sticky; 
+    position: sticky;         
+    top: 84px;                 /* ہیڈر کی ہائٹ کے حساب سے اسے 60px یا 80px کر سکتے ہیں */
+    z-index: 999;             
+    background-color: #ffffff; /* سفید بیک گراؤنڈ تاکہ نیچے کے کارڈز اس کے پیچھے چھپیں */
+}
+
+/* اسکرول بار چھپانے کا آپ کا پرانا کوڈ ویسے ہی رہے گا */
+.category-filter-bar::-webkit-scrollbar {
+    display: none;
+}
+.filter-btn {
+    background-color: #f8f9f9;
+    color: #5d6d7e;
+    border: 1px solid #ebedef;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background-color: #27ae60;
+    color: #ffffff;
+    border-color: #27ae60;
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.2);
+}
+
+/* ==========================================
+   ۴. پروڈکٹ گرڈ اور 3D فلوٹنگ بوتلیں
+   ========================================== */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+}
+
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px; /* فکسڈ: اندرونی پیڈنگ کو 5px سے بڑھا کر 12px کیا تاکہ کارڈ کھلا لگے */
+    text-decoration: none;
+    color: #222222;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    border: 1px solid #f5f5f5;
+    direction: ltr; /* کارڈ کا اندرونی فلو بائیں سے دائیں (قیمت بائیں، بٹن دائیں پوزیشن کے لیے) */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 🎯 فکسڈ: امیج باکس اور اوور فلو تاثر */
+.img-box {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #f7f7f7;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: visible; /* فکسڈ: 'visible' کیا تاکہ بوتل باہر ابھر سکے اور کٹے نہ */
+    margin-bottom: 12px;
+}
+
+/* 🎯 فکسڈ: بوتل پورے چورس باکس پر فٹ ہوگی اور 3D ابھرے گی */
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* کوئی خالی جگہ دائیں بائیں نہیں بچے گی */
+    z-index: 2;
+    border-radius: 6px;
+    transform: scale(1.02); /* ہلکی سی ابھری ہوئی پوزیشن */
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12)); /* بوتل کا اپنا زبردست سایہ */
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.product-card:hover .img-box img {
+    transform: scale(1.08) translateY(-4px); /* ہوور کرنے پر بوتل مزید ہوا میں ابھرے گی */
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
+}
+
+.product-name {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 0 1px 0;
+    line-height: 1.4;
+    text-align: left; /* اردو نام کے لیے ٹیکسٹ رائٹ الائن */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.price-box {
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* انگریزی قیمت کے لیے لیفٹ الائن */
+}
+
+.product-old-price {
+    font-size: 15px;
+    color: #999999;
+    text-decoration: line-through;
+    margin-bottom: 1px;
+}
+
+.product-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: green;
+}
+
+.minimal-add-btn {
+    width: 32px;
+    height: 32px;
+    background-color: #ffffff;
+    color: #222222;
+    border: 1px solid #27ae60;
+    border-radius: 50% 10px 50% 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 3;
+    position: relative;
+    font-size: 0;
+}
+
+.minimal-add-btn::before {
+    content: "\f07a";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 13px;
+}
+
+.minimal-add-btn:hover {
+    background-color: #27ae60;
+    color: #ffffff;
+    border-color: #27ae60;
+    transform: scale(1.05);
+}
+
+/* ==========================================
+   ۵. موبائل باٹم نیویگیشن بار
+   ========================================== */
+.bottom-nav {
+    position: fixed;
+    bottom: 10px; 
+    left: 5%;
+    right: 5%;
+    width: 90%; 
+    height: 60px;
+    background: linear-gradient(135deg, #a8ff78 0%, #78ffd6 100%);
+    border-radius: 30px; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); 
+    z-index: 2000; 
+    direction: ltr;
+    padding: 0 10px;
+    overflow: hidden;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #2c3e50;
+    font-size: 11px;
+    font-weight: 600;
+    gap: 4px;
+    transition: all 0.3s ease;
+    flex: 1;
+    position: relative;
+}
+
+.nav-item i {
+    font-size: 20px;
+}
+
+/* فکسڈ: ایکٹو اسٹیٹ جو بالکل پٹی کے اندر خوبصورت کلاسک بلاک بنے گی */
+.nav-item.active {
+    background-color: #000000; 
+    color: #ffffff; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80% !important;
+    width: 50px !important; 
+    flex: none;
+    border-radius: 50px;
+    box-shadow: none;
+    transform: none;
+}
+
+.nav-item.active span {
+    font-size: 10px;
+}
+
+/* باٹم نیو کارٹ کاؤنٹر پوزیشنز */
+.bottom-nav .cartCount {
+    position: absolute;
+    top: -4px;
+    right: 150px; /* فکسڈ: چونکہ پٹی کے اندر آئٹم ریلیٹیو ہے، پوزیشن کو بیلنس کر دیا */
+    background-color: red;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    min-width: 14px;
+    text-align: center;
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .bottom-nav .cartCount {
+        right: 60%; /* موبائل اسکرین پر کاؤنٹر دائرہ بالکل آئیکن کے اوپر سیٹ رہے گا */
+        top: -5px;
+    }
+}
+
+
+/* 🌟 فلوٹنگ سنیک بار کا سٹائل (شاپ پیج کے لیے) */
+.cart-snackbar {
+    position: fixed;
+    bottom: -100px; /* شروع میں اسکرین سے نیچے چھپا ہوگا */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1e1e1e; /* ڈارک ماڈرن تھیم */
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 30px; /* گول کنارے */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 9999;
+    font-family: sans-serif;
+    transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* مکھن جیسی اینیمیشن */
+}
+
+/* جب نوٹیفکیشن ظاہر ہو */
+.cart-snackbar.show {
+    bottom: 30px; /* اسکرین کے نیچے سے ۳۰ پکسل اوپر آ جائے گا */
+}
+
+/* ٹک مارک کا دائرہ */
+.snackbar-tick {
+    background-color: #2e7d32; /* ہرا رنگ */
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* چیک آؤٹ بٹن کا سٹائل */
+.snackbar-btn {
+    background-color: #2e7d32;
+    color: white;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.snackbar-btn:hover {
+    background-color: #1b5e20;
+}

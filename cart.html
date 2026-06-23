@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آپ کا کارٹ - Agricultural Store</title>
+    <!-- 🖇️ اسٹائل شیٹس اور فونٹ آٹسم کے لنکس -->
+    <link rel="stylesheet" href="fonts/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+    <!-- 📌 مین ہیڈر سیکشن -->
+    <header class="main-header">
+        <div class="header-top">
+            <div class="logo-area">
+                <i class="fas fa-leaf logo-icon"></i>
+                <span class="brand-name">Smart Kissan Smart Pakistan</span>
+            </div>
+            <div class="header-icons">
+                <div class="icon-btn cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cartCount">0</span>
+                </div>
+                <div class="icon-btn">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+            </div>
+        </div>
+        <!-- سرچ بار -->
+        <div class="search-container">
+            <input type="text" id="headerSearchInput" placeholder="Search...">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        </div>
+    </header>
+
+    <!-- 🛒 مین کارٹ لے آؤٹ کنٹینر -->
+    <div class="cart-container">
+        
+        <!-- ۱۔ بایاں حصہ: پروڈکٹس اور فارم (65%) -->
+        <div class="cart-left">
+            <h2 class="page-title"><span>Your Cart</span></h2>
+            
+            <!-- کارٹ کی لسٹ (جاوا اسکرپٹ کے لیے) -->
+            <div id="cartItemsList" class="cart-items-list">
+                <div class="cart-item" data-id="1">
+                    <img src="images/nativo.jpg" alt="Nativo" class="item-img">
+                    <div class="item-details">
+                        <h3>Nativo Premium Seeds (1kg)</h3>
+                        <p class="item-category">Kitchen Garden</p>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="qty-btn minus">-</button>
+                        <input type="number" value="1" class="qty-input" readonly>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                    <div class="item-price">Rs 4,500</div>
+                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                </div>
+            </div>
+
+            <!-- کسٹمر انفارمیشن فارم -->
+            <div class="shipping-form-section">
+                <h3>Shipping Information Form</h3>
+                <form id="checkoutForm">
+                    <div class="form-group-row">
+                        <input type="text" placeholder="پورا نام (Full Name)" required>
+                        <input type="text" placeholder="موبائل نمبر (Mobile Number)" required>
+                    </div>
+                    <div class="form-group-row">
+                        <input type="text" placeholder="شہر (City)" required>
+                        <input type="text" placeholder="مکمل پتہ (Full Address)" required>
+                    </div>
+                </form>
+                <p class="cod-notice">ادائیگی صرف کیش آن ڈلیوری ہوگی</p>
+            </div>
+        </div>
+
+        <!-- ۲۔ دایاں حصہ: بل کی تفصیل (35% اسٹکی پینل) -->
+        <div class="cart-right">
+            <div class="order-summary-box">
+                <h3>Order Summary</h3>
+                <div class="summary-row">
+                    <span>Total:</span>
+                    <span id="subtotalPrice">Rs 4,500</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery Charges:</span>
+                    <span id="deliveryCharges">Rs 200</span>
+                </div>
+                <hr>
+                <div class="summary-row total-row">
+                    <span>Grand Total:</span>
+                    <span id="grandTotalPrice">Rs 4,700</span>
+                </div>
+                <button type="submit" form="checkoutForm" class="finalize-btn">
+                    آرڈر فائنل کریں <br> <small>(Place Order)</small>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 📱 موبائل کے لیے باٹم نیویگیشن بار -->
+        <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="shop.html" class="nav-item">
+            <i class="fas fa-shopping-bag"></i>
+            <span>Shop</span>
+        </a>
+        <a href="social.html" class="nav-item">
+            <i class="fas fa-users"></i>
+            <span>Social+</span>
+        </a>
+        <a href="cart.html" class="nav-item">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Your Cart</span>
+            <span class="cartCount">0</span>
+        </a>
+        <a href="account.html" class="nav-item">
+            <i class="fas fa-user-circle"></i>
+            <span>Account</span>
+        </a>
+    </nav>
+
+    <!-- 📜 جاوا اسکرپٹ فائل کا لنک -->
+     
+    <script src="cart.js"></script>
+</body>
+</html>
