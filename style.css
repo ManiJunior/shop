@@ -8,13 +8,9 @@
     -webkit-tap-highlight-color: transparent;
 }
 /* جمیل نوری نستعلیق فونٹ کو ویب سائٹ میں شامل کرنا */
-@font-face {
-    font-family: 'Jameel Noori Nastaleeq';
-    src: url('fonts/jameelfont.ttf') format('truetype'); /* اگر فائل کا نام یا فارمیٹ الگ ہو تو یہاں بدلیں */
-    font-weight: normal;
-    font-style: normal;
+* {
+    font-family: 'Poppins', sans-serif;
 }
-
 
 body {
     font-family: 'Jameel Noori Nastaleeq', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -38,6 +34,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    padding-left: 4px;
 }
 
 .header-top {
@@ -47,19 +44,25 @@ body {
     width: 100%;
 }
 
+/* لوگو امیج کا سٹائل */
+/* 🌟 شاپ اور مین پیج دونوں کے لیے سیف لوگو ڈیزائن */
+.brand-logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain; /* تصویر کو کٹنے سے بچائے گا */
+    margin-left: 0;      /* نیگیٹو مارجن زیرو کر دیں تاکہ کسی بھی پیج پر باہر نہ بھاگے */
+}
+
 .logo-area {
     display: flex;
     align-items: center;
-    gap: 8px;
-}
-
-.logo-icon {
-    color: #27ae60;
-    font-size: 22px;
+    gap: 10px;
+    padding-left: 0;     /* اگر لیفٹ پر جگہ بن رہی ہے تو اسے زیرو کریں */
 }
 
 .brand-name {
-    font-size: 18px;
+    margin-left: none;
+    font-size: 15px;
     font-weight: 700;
     color: #1c2833;
 }
@@ -85,6 +88,79 @@ body {
     font-size: 10px;
     padding: 2px 7px;
     border-radius: 50%;
+}
+
+/* ==========================================================================
+   🔍 ریکومینڈڈ رزلٹس بار اور لائیو سرچ ہائی لائٹ کا ڈیزائن
+   ========================================================================== */
+
+/* مین فلوٹنگ باکس جو سرچ بار کے نیچے کھلے گا */
+.search-suggestions-bar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    max-height: 280px; /* رزلٹ زیادہ ہوں تو اسکرول بار بن جائے گی */
+    overflow-y: auto;
+    z-index: 9999;
+    display: none; /* شروع میں چھپی رہے گی، جاوا اسکرپٹ اسے شو کرے گا */
+    margin-top: 5px;
+}
+
+/* لسٹ میں موجود ہر ایک پروڈکٹ کی رو (Row) */
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333333;
+    border-bottom: 1px solid #f5f5f5;
+    transition: background 0.2s ease;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-item:hover {
+    background-color: #f9f9f9;
+}
+
+/* لسٹ کے اندر پروڈکٹ کی چھوٹی تصویر */
+.suggestion-img {
+    width: 15px;
+    height: 15px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* پروڈکٹ کا نام */
+.suggestion-name {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* 🌟 لائیو لفظ ہائی لائٹ کرنے کا اسٹائل (مین اور شاپ دونوں پیجز کے لیے) */
+.search-highlight {
+    background-color: #ffeb3b; /* چمکدار پیلا رنگ */
+    color: #000000;
+    padding: 0 2px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* اگر کوئی رزلٹ نہ ملے تو یہ میسج دیکھے گا */
+.no-results-msg {
+    padding: 15px;
+    color: #777777;
+    font-size: 13px;
+    text-align: center;
 }
 
 .search-container {
@@ -324,7 +400,7 @@ body {
     width: 100%;
     margin: 10px 0 5px 0;
     position: sticky;
-    top: 85px;
+    top: 80px;
     z-index: 999;
     background-color: #ffffff;
     padding: 2px 0;
@@ -356,140 +432,112 @@ body {
 
 /* ==========================================
    5. پروڈکٹ گریڈ اور ٹیمو اسٹائل کارڈز 
-   ========================================== */
-.products-grid {
+   ========================================
+   /* مین گرڈ سسٹم */
+/* 📱 پہلے موبائل سکرین کے لیے (Default for Mobile) */
+/* ==========================================================================
+   کیٹیگری گرڈ اور کارڈز (اب بالکل فل اسکرین پر پھیلے گا)
+   ========================================================================== */
+.category-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 5px;
+    grid-template-columns: repeat(2, 1fr); /* موبائل پر ایک لائن میں ۲ کارڈز */
+    gap: 12px; 
+    padding: 15px 12px; /* ہلکی سی سائیڈ پیڈنگ تاکہ کنارے اسکرین سے نہ چپکیں */
+    width: 100%;       /* 🌟 یہ پوری اسکرین کی چوڑائی لے گا */
+    max-width: 100%;   /* 🌟 ۱۲۰۰px والی حد کو ہم نے ختم کر دیا */
+    box-sizing: border-box;
+    direction: ltr;
 }
 
-@media (max-width: 768px) {
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-}
-
-.product-card {
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 12px; /* فکسڈ: اندرونی پیڈنگ کو 5px سے بڑھا کر 12px کیا تاکہ کارڈ کھلا لگے */
+.category-card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
     text-decoration: none;
     color: #222222;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
-    border: 1px solid #f5f5f5;
-    direction: ltr; /* کارڈ کا اندرونی فلو بائیں سے دائیں (قیمت بائیں، بٹن دائیں پوزیشن کے لیے) */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-}
-
-.product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-/* 🎯 فکسڈ: امیج باکس اور اوور فلو تاثر */
-.img-box {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background-color: #f7f7f7;
-    border-radius: 6px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: visible; /* فکسڈ: 'visible' کیا تاکہ بوتل باہر ابھر سکے اور کٹے نہ */
-    margin-bottom: 12px;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 🎯 فکسڈ: بوتل پورے چورس باکس پر فٹ ہوگی اور 3D ابھرے گی */
-.img-box img {
+.cat-image-box {
+    position: relative;
+    width: 100%;
+    height: 130px; 
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.slider-img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* کوئی خالی جگہ دائیں بائیں نہیں بچے گی */
-    z-index: 2;
-    border-radius: 6px;
-    transform: scale(1.02); /* ہلکی سی ابھری ہوئی پوزیشن */
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12)); /* بوتل کا اپنا زبردست سایہ */
-    transition: transform 0.2s ease, filter 0.2s ease;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
 }
 
-.product-card:hover .img-box img {
-    transform: scale(1.08) translateY(-4px); /* ہوور کرنے پر بوتل مزید ہوا میں ابھرے گی */
-    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
+.slider-img.active {
+    opacity: 1;
 }
 
-.product-name {
-    font-size: 20px;
-    font-weight: 500;
-    margin: 0 0 1px 0;
+.cat-info {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-grow: 1;
+}
+
+.cat-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111111;
+}
+
+.cat-desc {
+    font-size: 11px;
+    color: #666666;
     line-height: 1.4;
-    text-align: left; /* اردو نام کے لیے ٹیکسٹ رائٹ الائن */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-.product-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: auto;
-}
-
-.price-box {
-    display: flex;
-    flex-direction: column;
-    text-align: left; /* انگریزی قیمت کے لیے لیفٹ الائن */
-}
-
-.product-old-price {
-    font-size: 15px;
-    color: #999999;
-    text-decoration: line-through;
-    margin-bottom: 1px;
-}
-
-.product-price {
-    font-size: 20px;
-    font-weight: 700;
-    color: green;
-}
-
-.minimal-add-btn {
-    width: 32px;
-    height: 32px;
-    background-color: #ffffff;
-    color: #222222;
-    border: 1px solid #27ae60;
-    border-radius: 50% 10px 50% 50%;
+.cat-btn {
+    margin-top: auto; 
+    background-color: #2e7d32;
+    color: #ffffff;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 3;
-    position: relative;
-    font-size: 0;
+    gap: 6px;
 }
 
-.minimal-add-btn::before {
-    content: "\f07a";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    font-size: 13px;
-}
+/* ==========================================================================
+   💻 بڑی اسکرین (PC/Laptop) کے لیے خودکار سیٹنگ
+   ========================================================================== */
+@media (min-width: 992px) {
+    .category-grid {
+        grid-template-columns: repeat(4, 1fr); /* بڑی اسکرین پر ایک لائن میں ۴ کارڈز */
+        gap: 20px;
+        padding: 30px 25px; /* پی سی پر مناسب سائیڈ اسپیس */
+    }
 
-.minimal-add-btn:hover {
-    background-color: #27ae60;
-    color: #ffffff;
-    border-color: #27ae60;
-    transform: scale(1.05);
+    .cat-image-box {
+        height: 180px; 
+    }
 }
-
 /* ==========================================
    6. موبائل باٹم نیویگیشن بار 
    ========================================== */

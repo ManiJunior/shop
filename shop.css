@@ -55,10 +55,19 @@ body {
     width: 100%;
 }
 
+/* 🌟 شاپ اور مین پیج دونوں کے لیے سیف لوگو ڈیزائن */
+.brand-logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain; /* تصویر کو کٹنے سے بچائے گا */
+    margin-left: 0;      /* نیگیٹو مارجن زیرو کر دیں تاکہ کسی بھی پیج پر باہر نہ بھاگے */
+}
+
 .logo-area {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    padding-left: 0;     /* اگر لیفٹ پر جگہ بن رہی ہے تو اسے زیرو کریں */
 }
 
 .logo-icon {
@@ -93,6 +102,78 @@ body {
     font-size: 10px;
     padding: 2px 5px;
     border-radius: 50%;
+}
+/* ==========================================================================
+   🔍 ریکومینڈڈ رزلٹس بار اور لائیو سرچ ہائی لائٹ کا ڈیزائن
+   ========================================================================== */
+
+/* مین فلوٹنگ باکس جو سرچ بار کے نیچے کھلے گا */
+.search-suggestions-bar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    max-height: 280px; /* رزلٹ زیادہ ہوں تو اسکرول بار بن جائے گی */
+    overflow-y: auto;
+    z-index: 9999;
+    display: none; /* شروع میں چھپی رہے گی، جاوا اسکرپٹ اسے شو کرے گا */
+    margin-top: 5px;
+}
+
+/* لسٹ میں موجود ہر ایک پروڈکٹ کی رو (Row) */
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333333;
+    border-bottom: 1px solid #f5f5f5;
+    transition: background 0.2s ease;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-item:hover {
+    background-color: #f9f9f9;
+}
+
+/* لسٹ کے اندر پروڈکٹ کی چھوٹی تصویر */
+.suggestion-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* پروڈکٹ کا نام */
+.suggestion-name {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* 🌟 لائیو لفظ ہائی لائٹ کرنے کا اسٹائل (مین اور شاپ دونوں پیجز کے لیے) */
+.search-highlight {
+    background-color: #ffeb3b; /* چمکدار پیلا رنگ */
+    color: #000000;
+    padding: 0 2px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* اگر کوئی رزلٹ نہ ملے تو یہ میسج دیکھے گا */
+.no-results-msg {
+    padding: 15px;
+    color: #777777;
+    font-size: 13px;
+    text-align: center;
 }
 
 .search-container {

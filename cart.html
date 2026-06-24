@@ -13,27 +13,27 @@
 
     <!-- 📌 مین ہیڈر سیکشن -->
     <header class="main-header">
-        <div class="header-top">
-            <div class="logo-area">
-                <i class="fas fa-leaf logo-icon"></i>
-                <span class="brand-name">Smart Kissan Smart Pakistan</span>
-            </div>
-            <div class="header-icons">
-                <div class="icon-btn cart-btn">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cartCount">0</span>
-                </div>
-                <div class="icon-btn">
-                    <i class="fa-solid fa-bell"></i>
-                </div>
+    <div class="header-top">
+        <div class="logo-area">
+            <img src="Pictures/logo.jpeg" alt="Brand Logo" class="brand-logo-img">
+            
+        </div>
+        <div class="header-icons">
+            <div class="icon-btn cart-btn">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cartCount">0</span>
             </div>
         </div>
-        <!-- سرچ بار -->
-        <div class="search-container">
-            <input type="text" id="headerSearchInput" placeholder="Search...">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        </div>
-    </header>
+    </div>
+    <!-- سرچ بار والا کنٹینر -->
+<div class="search-container" style="position: relative;"> <!-- اس کے پیرنٹ پر ریلیٹیو پوزیشن لازمی ہونی چاہیے -->
+    <input type="text" id="headerSearchInput" placeholder="Search products...">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    
+    <!-- 🌟 یہ وہ خالی ڈو ہے جو آپ نے دوبارہ رکھنی ہے -->
+    <div id="searchSuggestionsBar" class="search-suggestions-bar"></div>
+</div>
+</header>
 
     <!-- 🛒 مین کارٹ لے آؤٹ کنٹینر -->
     <div class="cart-container">

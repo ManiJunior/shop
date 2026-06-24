@@ -11,27 +11,26 @@
 
     <!-- 1. CLEAN HEADER WITH SEARCH BAR -->
     <header class="main-header">
-        <div class="header-top">
-            <div class="logo-area">
-                <i class="fas fa-leaf logo-icon"></i>
-                <span class="brand-name">Smart Kissan Smart Pakistan</span>
-            </div>
-            <div class="header-icons">
-                <div class="icon-btn cart-btn">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cartCount">0</span>
-                </div>
-                <div class="icon-btn">
-                    <i class="fa-solid fa-bell"></i>
-                </div>
-            </div>
+    <div class="header-top">
+        <div class="logo-area">
+            <img src="Pictures/logo.jpeg" alt="Brand Logo" class="brand-logo-img">
         </div>
-        <!-- سرچ بار -->
-        <div class="search-container">
-            <input type="text" id="headerSearchInput" placeholder="Search...">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        </div>
-    </header>
+        <a href="cart.html" class="header-icons">
+            <div class="icon-btn cart-btn">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cartCount">0</span>
+            </div>
+        </a>
+    </div>
+    <!-- سرچ بار والا کنٹینر -->
+<div class="search-container" style="position: relative;"> <!-- اس کے پیرنٹ پر ریلیٹیو پوزیشن لازمی ہونی چاہیے -->
+    <input type="text" id="headerSearchInput" placeholder="Search products...">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    
+    <!-- 🌟 یہ وہ خالی ڈو ہے جو آپ نے دوبارہ رکھنی ہے -->
+    <div id="searchSuggestionsBar" class="search-suggestions-bar"></div>
+</div>
+</header>
 
     <main class="content-wrapper">
 
@@ -124,72 +123,246 @@
         </div>
 
         <!-- 5. پروڈکٹس گریڈ سیکشن -->
-        <section class="products-grid">
-            <!-- پروڈکٹ کارڈ -->
-            <a href="shop.html" class="product-card" data-id="nativo-pesticide" data-cat="Pesticides">
-                <div class="img-box">
-                    <img src="Pictures/Roundup.jpg" alt="Nativo">
-                </div>
-                <h4 class="product-name">Nativo</h4>
-                <div class="product-footer">
-                    <!-- قیمتوں کا باکس -->
-                    <div class="price-box">
-                        <span class="product-old-price">RS 1,549</span>
-                        <span class="product-price">RS 1,250</span>
-                    </div>
-                    <!-- کارٹ بٹن -->
-                    <button class="minimal-add-btn"></button>
-                </div>
-            </a>
+        <section class="category-grid">
+    
+    <!-- 1. kitchen Gardening Category Card -->
+    <a href="shop.html?category=fertilizers" class="category-card" data-card="kitchen-Gardening">
+        <div class="cat-image-box">
+            <!-- ۴ یا ۵ تصویروں کی لسٹ جو بدلیں گی -->
+            <img src="Pictures/k2.jpg" class="slider-img active" alt="kitchen-Gardening">
+            <img src="Pictures/k1.jpg" class="slider-img" alt="kitchen-Gardening">
+            <img src="Pictures/k3.jpg" class="slider-img" alt="kitchen-Gardening">
+            <img src="Pictures/k1.jpg" class="slider-img" alt="kitchen-Gardening">
+        </div>
+        <div class="cat-info">
+            <h3 class="cat-title">kitchen Gardening</h3>
+            <p class="cat-desc">........</p>
+            <button class="cat-btn">
+                <span>Explore Gardening</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </a>
 
-            <a href="shop.html" class="product-card" data-id="Lamda-House Hold" data-cat="House Hold">
-                <div class="img-box">
-                    <img src="Pictures/Roundup.jpg" alt="Lamda">
-                </div>
-                <h4 class="product-name">Lamda</h4>
-                <div class="product-footer">
-                    <!-- قیمتوں کا باکس -->
-                    <div class="price-box">
-                        <span class="product-old-price">RS 1,549</span>
-                        <span class="product-price">RS 1,250</span>
-                    </div>
-                    <!-- کارٹ بٹن -->
-                    <button class="minimal-add-btn"></button>
-                </div>
-            </a>
+    <!-- 2. Pesticides Category Card -->
+    <a href="shop.html?category=fertilizers" class="category-card" data-card="pesticides">
+        <div class="cat-image-box">
+            <img src="Pictures/k1.jpg" class="slider-img active" alt="pesticides">
+            <img src="Pictures/k2.jpg" class="slider-img" alt="pesticides">
+            <img src="Pictures/k4.jpg" class="slider-img" alt="pesticides">
+            <img src="Pictures/k3.jpg" class="slider-img" alt="pesticides">
+            
+        </div>
+        <div class="cat-info">
+            <h3 class="cat-title">Pesticides</h3>
+            <p class="cat-desc">Grow fresh, organic, and healthy vegetables right at home with our premium seeds and kits.</p>
+            <button class="cat-btn">
+                <span>Shop Solutions</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </a>
+    <!-- 3. Seeds Category Card -->
+    <a href="shop.html?category=seeds" class="category-card" data-card="seeds">
+        <div class="cat-image-box">
+            <img src="Pictures/k1.jpg" class="slider-img active" alt="Seeds">
+            <img src="Pictures/k2.jpg" class="slider-img" alt="Seeds">
+            <img src="Pictures/k3.jpg" class="slider-img" alt="Seeds">
+            <img src="Pictures/k4.jpg" class="slider-img" alt="Seeds">
+            
+        </div>
+        <div class="cat-info">
+            <h3 class="cat-title">Seeds</h3>
+            <p class="cat-desc">Boost your plant growth with certified organic fertilizers and top-quality farming equipment.</p>
+            <button class="cat-btn">
+                <span>View Products</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </a>
+    <!-- 4. Hybrid Seeds & Tools Category Card -->
+    <a href="shop.html?category=fertilizers" class="category-card" data-card="hybrid-seeds">
+        <div class="cat-image-box">
+            <img src="Pictures/k1.jpg" class="slider-img active" alt="Hybrid Seeds">
+            <img src="Pictures/k2.jpg" class="slider-img" alt="Hybrid Seeds">
+            <img src="Pictures/k3.jpg" class="slider-img" alt="Hybrid Seeds">
+            <img src="Pictures/k4.jpg" class="slider-img" alt="Hybrid Seeds">
+            
+        </div>
+        <div class="cat-info">
+            <h3 class="cat-title">Hybrid Seeds</h3>
+            <p class="cat-desc">Boost your plant growth with certified organic fertilizers and top-quality farming equipment.</p>
+            <button class="cat-btn">
+                <span>Shop Products</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </a>
+    
+    <!-- 5. House Hold Category Card -->
+    <a href="shop.html?category=fertilizers" class="category-card" data-card="house-Hold">
+        <div class="cat-image-box">
+            <img src="Pictures/k1.jpg" class="slider-img active" alt="house-Hold">
+            <img src="Pictures/k2.jpg" class="slider-img" alt="house-Hold">
+            <img src="Pictures/k3.jpg" class="slider-img" alt="house-Hold">
+            <img src="Pictures/k4.jpg" class="slider-img" alt="house-Hold">
+            
+        </div>
+        <div class="cat-info">
+            <h3 class="cat-title">House Hold Products</h3>
+            <p class="cat-desc">Boost your plant growth with certified organic fertilizers and top-quality farming equipment.</p>
+            <button class="cat-btn">
+                <span>View Products</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </a>
+    <!-- 6. Home Decors Category Card -->
+    <a href="shop.html?category=fertilizers" class="category-card" data-card="home-decor">
+        <div class="cat-image-box">
+            <img src="Pictures/k1.jpg" class="slider-img active" alt="home-decor">
+            <img src="Pictures/k2.jpg" class="slider-img" alt="home-decor">
+            <img src="Pictures/k3.jpg" class="slider-img" alt="home-decor">
+            <img src="Pictures/k4.jpg" class="slider-img" alt="home-decor">
+            
+        </div>
+        <div class="cat-info">
+            <h3 class="cat-title">Home Decors</h3>
+            <p class="cat-desc">Boost your plant growth with certified organic fertilizers and top-quality farming equipment.</p>
+            <button class="cat-btn">
+                <span>Decorate Your Home</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </a>
+    <!-- 7. Fertilizers Category Card -->
+    <a href="shop.html?category=fertilizers" class="category-card" data-card="fertilizers">
+        <div class="cat-image-box">
+            <img src="Pictures/k1.jpg" class="slider-img active" alt="fertilizers">
+            <img src="Pictures/k2.jpg" class="slider-img" alt="fertilizers">
+            <img src="Pictures/k3.jpg" class="slider-img" alt="fertilizers">
+            <img src="Pictures/k4.jpg" class="slider-img" alt="fertilizers">
+            
+        </div>
+        <div class="cat-info">
+            <h3 class="cat-title">Fertilizers</h3>
+            <p class="cat-desc">Boost your plant growth with certified organic fertilizers and top-quality farming equipment.</p>
+            <button class="cat-btn">
+                <span>Boots Your Growth</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </a>
+    <!-- 8. Livestock Category Card -->
+    <a href="shop.html?category=fertilizers" class="category-card" data-card="livestock">
+        <div class="cat-image-box">
+            <img src="Pictures/k1.jpg" class="slider-img active" alt="livestock">
+            <img src="Pictures/k2.jpg" class="slider-img" alt="livestock">
+            <img src="Pictures/k3.jpg" class="slider-img" alt="livestock">
+            <img src="Pictures/k4.jpg" class="slider-img" alt="livestock">
+            
+        </div>
+        <div class="cat-info">
+            <h3 class="cat-title">Livestock</h3>
+            <p class="cat-desc">Boost your plant growth with certified organic fertilizers and top-quality farming equipment.</p>
+            <button class="cat-btn">
+                <span>Shop Now</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </a>
+    <!-- 9. Feed Category Card -->
+    <a href="shop.html?category=fertilizers" class="category-card" data-card="feed">
+        <div class="cat-image-box">
+            <img src="Pictures/k1.jpg" class="slider-img active" alt="feed">
+            <img src="Pictures/k2.jpg" class="slider-img" alt="feed">
+            <img src="Pictures/k3.jpg" class="slider-img" alt="feed">
+            <img src="Pictures/k4.jpg" class="slider-img" alt="fee">
+            
+        </div>
+        <div class="cat-info">
+            <h3 class="cat-title">Feed</h3>
+            <p class="cat-desc">Boost your plant growth with certified organic fertilizers and top-quality farming equipment.</p>
+            <button class="cat-btn">
+                <span>Shop Now</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </a>
+    <!-- 10. VM Category Card -->
+    <a href="shop.html?category=fertilizers" class="category-card" data-card="veterinary-medicine">
+        <div class="cat-image-box">
+            <img src="Pictures/k1.jpg" class="slider-img active" alt="veterinary-medicine">
+            <img src="Pictures/k2.jpg" class="slider-img" alt="veterinary-medicine">
+            <img src="Pictures/k3.jpg" class="slider-img" alt="vegetables">
+            <img src="Pictures/k4.jpg" class="slider-img" alt="veterinary-medicine">
+            
+        </div>
+        <div class="cat-info">
+            <h3 class="cat-title">Veterinary Medicine</h3>
+            <p class="cat-desc">Boost your plant growth with certified organic fertilizers and top-quality farming equipment.</p>
+            <button class="cat-btn">
+                <span>Cure Your Livestock</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </a>
+    <!-- 11. Spray Machinary Category Card -->
+    <a href="shop.html?category=fertilizers" class="category-card" data-card="spray-machinary">
+        <div class="cat-image-box">
+            <img src="Pictures/k1.jpg" class="slider-img active" alt="spray-machinary">
+            <img src="Pictures/k2.jpg" class="slider-img" alt="spray-machinary">
+            <img src="Pictures/k3.jpg" class="slider-img" alt="spray-machinary">
+            <img src="Pictures/k4.jpg" class="slider-img" alt="spray-machinary">
+            
+        </div>
+        <div class="cat-info">
+            <h3 class="cat-title">Spray Machinary</h3>
+            <p class="cat-desc">Boost your plant growth with certified organic fertilizers and top-quality farming equipment.</p>
+            <button class="cat-btn">
+                <span>Find Your Products</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </a>
+    <!-- 12. Tunnel Farming Category Card -->
+    <!-- <a href="shop.html?category=fertilizers" class="category-card" data-card="tunnel-farming">
+        <div class="cat-image-box">
+            <img src="Pictures/k1.jpg" class="slider-img active" alt="tunnel-farming">
+            <img src="Pictures/k2.jpg" class="slider-img" alt="tunnel-farming">
+            <img src="Pictures/k3.jpg" class="slider-img" alt="tunnel-farming">
+            <img src="Pictures/k4.jpg" class="slider-img" alt="tunnel-farming">
+            
+        </div>
+        <div class="cat-info">
+            <h3 class="cat-title">Tunnel Farming</h3>
+            <p class="cat-desc">Boost your plant growth with certified organic fertilizers and top-quality farming equipment.</p>
+            <button class="cat-btn">
+                <span>Shop Best Products</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </a> -->
+    <!-- 13. Agriculture Products Category Card -->
+    <a href="shop.html?category=fertilizers" class="category-card" data-card="agriculture-tools">
+        <div class="cat-image-box">
+            <img src="Pictures/k1.jpg" class="slider-img active" alt="agriculture-tools">
+            <img src="Pictures/k2.jpg" class="slider-img" alt="agriculture-tools">
+            <img src="Pictures/k3.jpg" class="slider-img" alt="agriculture-tools">
+            <img src="Pictures/k4.jpg" class="slider-img" alt="agriculture-tools">
+            
+        </div>
+        <div class="cat-info">
+            <h3 class="cat-title">Agriculture Tools</h3>
+            <p class="cat-desc">Boost your plant growth with certified organic fertilizers and top-quality farming equipment.</p>
+            <button class="cat-btn">
+                <span>Trusted Products</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </a>   
 
-            <a href="shop.html" class="product-card" data-id="Lamda-House Hold" data-cat="House Hold">
-                <div class="img-box">
-                    <img src="Pictures/Roundup.jpg" alt="Lamda">
-                </div>
-                <h4 class="product-name">Lamda</h4>
-                <div class="product-footer">
-                    <!-- قیمتوں کا باکس -->
-                    <div class="price-box">
-                        <span class="product-old-price">RS 1,549</span>
-                        <span class="product-price">RS 1,250</span>
-                    </div>
-                    <!-- کارٹ بٹن -->
-                    <button class="minimal-add-btn"></button>
-                </div>
-            </a>
-
-            <a href="shop.html" class="product-card" data-id="Roundup-Pesticide" data-cat="Pesticide">
-                <div class="img-box">
-                    <img src="Pictures/Roundup.jpg" alt="Roundup">
-                </div>
-                <h4 class="product-name">Roundup</h4>
-                <div class="product-footer">
-                    <!-- قیمتوں کا باکس -->
-                    <div class="price-box">
-                        <span class="product-old-price">RS 1,549</span>
-                        <span class="product-price">RS 1,250</span>
-                    </div>
-                    <!-- کارٹ بٹن -->
-                    <button class="minimal-add-btn"></button>
-                </div>
-            </a>
-        </section>
+</section>
 
     </main>
 
@@ -217,7 +390,7 @@
             <span>Account</span>
         </a>
     </nav>
-    
+    <script src="shop.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

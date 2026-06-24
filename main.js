@@ -209,118 +209,96 @@ function addToCart(id, name, price, image, category) {
 
 // ٹیسٹ کرنے کے لیے آپ ہوم پیج کے کسی بھی بٹن پر یہ لگا کر کلک کر سکتے ہیں:
 // onclick="addToCart(1, 'Nativo Premium Seeds (1kg)', 4500, 'images/nativo.jpg', 'Kitchen Garden')"
+document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".category-card");
 
+    cards.forEach(card => {
+        const images = card.querySelectorAll(".slider-img");
+        if (images.length <= 1) return;
+
+        let currentIndex = 0;
+
+        // 🔄 تصویر بدلنے کا فنکشن جو ہر بار نیا رینڈم ٹائم لے گا
+        function changeImageRandomly() {
+            // ۱۔ موجودہ امیج سے کلاس ہٹاؤ
+            images[currentIndex].classList.remove("active");
+
+            // ۲۔ اگلی امیج پر جاؤ
+            currentIndex = (currentIndex + 1) % images.length;
+
+            // ۳۔ نئی امیج پر کلاس لگاؤ
+            images[currentIndex].classList.add("active");
+
+            // 🎲 ۲۰۰۰ سے ۲۵۰۰ ملی سیکنڈ کے بیچ رینڈم ٹائم کیلکولیٹ کرو
+            let randomTime = Math.floor(Math.random() * (2500 - 2000 + 1)) + 2000;
+
+            // ۴۔ اگلی باری کے لیے نئے رینڈم ٹائم کے ساتھ دوبارہ فنکشن چلاؤ
+            setTimeout(changeImageRandomly, randomTime);
+        }
+
+        // 🎲 پہلی باری کا ٹائم بھی رینڈم رکھیں تاکہ سارے کارڈز ایک ساتھ شروع نہ ہوں
+        let initialRandomTime = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
+        setTimeout(changeImageRandomly, initialRandomTime);
+    });
+}); 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const addButtons = document.querySelectorAll(".minimal-add-btn");
-    const cartCountElements = document.querySelectorAll(".cartCount");
+    const searchInput = document.getElementById("headerSearchInput");
+    const suggestionsBar = document.getElementById("searchSuggestionsBar");
 
-    // 🔄 ہیڈر کاؤنٹ اپڈیٹ کرنے کا فنکشن
-    function updateHeaderCartCount() {
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        let totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-        cartCountElements.forEach(el => {
-            el.textContent = totalCount;
-        });
+    if (!searchInput || !suggestionsBar) return;
+
+    // 📦 آپ کی ویب سائٹ کی پروڈکٹس کا ڈیٹا (یہاں اپنی مرضی سے نام اور امیجز سیٹ کر لیں)
+    const allProducts = [
+        { id: "nativo", name: "Nativo Pesticide is one of the most and best sell product", cat: "Pesticides", img: "Pictures/Roundup.jpg", link: "shop.html" },
+        { id: "roundup", name: "Roundup Weed Killer for Kitchen Garden", cat: "Kitchen Garden", img: "Pictures/Roundup.jpg", link: "shop.html" }
+    ];
+
+    function escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-    // ⚡ "Add to Cart" بٹن ایکشن
-    addButtons.forEach(button => {
-        button.addEventListener("click", function (e) {
-            e.preventDefault();
-            e.stopPropagation();
+    // لائیو ٹائپنگ اور ریکومینڈیشن کا لاجک
+    searchInput.addEventListener("input", function () {
+        const query = this.value.trim().toLowerCase();
 
-            const productCard = this.closest(".product-card");
-            if (!productCard) return;
+        if (query === "") {
+            suggestionsBar.innerHTML = "";
+            suggestionsBar.style.display = "none";
+            return;
+        }
 
-            const productId = productCard.getAttribute("data-id");
-            const productCat = productCard.getAttribute("data-cat") || "Pesticides";
-            const productName = productCard.querySelector(".product-name").textContent.trim();
-            const productImg = productCard.querySelector(".img-box img").getAttribute("src");
-            
-            const priceText = productCard.querySelector(".product-price").textContent;
-            const productPrice = parseInt(priceText.replace(/[^0-9]/g, '')) || 0;
-
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            let existingItem = cart.find(item => item.id === productId);
-
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    id: productId,
-                    name: productName,
-                    price: productPrice,
-                    image: productImg,
-                    category: productCat,
-                    quantity: 1
-                });
-            }
-
-            localStorage.setItem("cart", JSON.stringify(cart));
-            updateHeaderCartCount(); // اپنے پیج کا کاؤنٹ فوراً بدلو
-
-            // alert(`${productName} کارٹ میں شامل کر دی گئی ہے!`);
+        const matchedProducts = allProducts.filter(product => {
+            return product.name.toLowerCase().includes(query) || product.cat.toLowerCase().includes(query);
         });
-    });
 
-    // ⚡ چوکیدار: اگر شاپ یا کارٹ پیج پر کچھ بدلے، تو ہوم پیج کا کاؤنٹ لائیو بدلے
-    window.addEventListener("storage", function (e) {
-        if (e.key === "cart") {
-            updateHeaderCartCount();
+        if (matchedProducts.length > 0) {
+            suggestionsBar.innerHTML = "";
+            suggestionsBar.style.display = "block";
+
+            matchedProducts.forEach(product => {
+                const regex = new RegExp(`(${escapeRegExp(query)})`, "gi");
+                const highlightedName = product.name.replace(regex, `<mark class="search-highlight">$1</mark>`);
+
+                const itemLink = document.createElement("a");
+                itemLink.href = product.link;
+                itemLink.className = "suggestion-item";
+                itemLink.innerHTML = `
+                    <img src="${product.img}" class="suggestion-img" alt="${product.name}">
+                    <span class="suggestion-name">${highlightedName}</span>
+                `;
+                suggestionsBar.appendChild(itemLink);
+            });
+        } else {
+            suggestionsBar.style.display = "block";
+            suggestionsBar.innerHTML = `<div class="no-results-msg">No products found for "${this.value}"</div>`;
         }
     });
 
-    // پیج لوڈ ہوتے ہی کاؤنٹ شو کرنا
-    updateHeaderCartCount();
-});
-
-
-
-document.querySelectorAll('.minimal-add-btn').forEach(button => {
-    button.addEventListener('click', function(event) {
-        // اگلے پیج پر جانے سے پکا روکنے کے لیے
-        event.preventDefault();
-        event.stopPropagation();
-        
-        // کارٹ کی گنتی میں اضافہ اور ڈسپلے اپڈیٹ
-        globalCartCount++;
-        document.querySelectorAll('.cartCount').forEach(countSpan => {
-            countSpan.textContent = globalCartCount;
-        });
-
-        // ==========================================================================
-        // 🌟 فلوٹنگ سنیک بار (Bottom Notification) بنانے کا لاجک
-        // ==========================================================================
-        
-        // اگر پہلے سے کوئی نوٹیفکیشن اسکرین پر ہے تو اسے ہٹاؤ
-        const oldSnackbar = document.querySelector('.cart-snackbar');
-        if (oldSnackbar) oldSnackbar.remove();
-
-        // ۱۔ نیا نوٹیفکیشن باکس (Div) بنائیں
-        const snackbar = document.createElement('div');
-        snackbar.className = 'cart-snackbar';
-        
-        // ۲۔ اس کے اندر کا مال سیٹ کریں (ٹک کا نشان، ٹیکسٹ اور چیک آؤٹ لنک)
-        snackbar.innerHTML = `
-            <div class="snackbar-tick">✓</div>
-            <span style="font-size: 14px;">آئٹم شامل ہو گیا!</span>
-            <a href="cart.html" class="snackbar-btn">Checkout کریں</a>
-        `;
-
-        // ۳۔ اسے پیج کے اندر شامل (Append) کریں
-        document.body.appendChild(snackbar);
-
-        // ۴۔ صرف ۵۰ ملی سیکنڈ کا وقفہ دے کر 'show' کلاس لگا دیں تاکہ اینیمیشن کے ساتھ اوپر آئے
-        setTimeout(() => {
-            snackbar.classList.add('show');
-        }, 50);
-
-        // ۵۔ ٹھیک ۳ سیکنڈ (3000 مائیکرو سیکنڈ) بعد پٹی کو واپس نیچے چھپا کر ڈیلیٹ کر دیں
-        setTimeout(() => {
-            snackbar.classList.remove('show');
-            // اینیمیشن ختم ہونے کے بعد اسے ایچ ٹی ایم ایل سے بالکل صاف کر دو
-            setTimeout(() => { snackbar.remove(); }, 400);
-        }, 3000);
+    // باہر کلک کرنے پر لسٹ بند کرنا
+    document.addEventListener("click", function (e) {
+        if (!searchInput.contains(e.target) && !suggestionsBar.contains(e.target)) {
+            suggestionsBar.style.display = "none";
+        }
     });
 });

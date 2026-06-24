@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
             cartItemsList.innerHTML = `
                 <div style="text-align:center; padding: 40px; font-family:sans-serif;">
                     <i class="fas fa-shopping-basket" style="font-size: 48px; color: #ccc; margin-bottom: 15px;"></i>
-                    <p style="font-size: 18px; color: #666;">آپ کا کارٹ ابھی خالی ہے!</p>
-                    <a href="main.html" style="display:inline-block; margin-top:15px; padding:10px 20px; background:#2e7d32; color:white; text-decoration:none; border-radius:5px; font-weight:bold;">شاپنگ کریں</a>
+                    <p style="font-size: 18px; color: #666;">Your Cart Is Empty Now</p>
+                    <a href="shop.html" style="display:inline-block; margin-top:15px; padding:10px 20px; background:#2e7d32; color:white; text-decoration:none; border-radius:5px; font-weight:bold;">SHOP NOW</a>
                 </div>
             `;
             updateCartTotals(0);
