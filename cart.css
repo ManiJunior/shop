@@ -115,11 +115,31 @@ body, input, button, select, textarea {
 /* ==========================================================================
    📝 4. شپنگ فارم (Shipping Form)
    ========================================================================== */
-.shipping-form-section {
-    margin-top: 40px;
-    background: #fff;
-    border-top: 2px solid #eee;
-    padding-top: 25px;
+.shipping-form-section select {
+    width: 100%;
+    padding: 10px; /* جتنا آپ کی ان پٹ فیلڈز کا پیڈنگ ہے، وہی رکھیں */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fff;
+    box-sizing: border-box;
+    direction: ltr;
+}
+.shipping-form-section h3{
+    direction: ltr;
+    margin-bottom: 5px;
+}
+
+.shipping-form-section select:focus {
+    border-color: #2e7d32; /* یا جو بھی آپ کا برینڈ کلر ہے */
+    outline: none;
+}
+
+/* جب ڈراپ ڈاؤن لاک ہو تو اس کا رنگ */
+.shipping-form-section select:disabled {
+    background-color: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
     direction: ltr;
 }
 
@@ -127,6 +147,7 @@ body, input, button, select, textarea {
     display: flex;
     gap: 15px;
     margin-bottom: 15px;
+    direction: ltr;
 }
 
 .form-group-row input {
@@ -192,7 +213,7 @@ body, input, button, select, textarea {
     .cart-container {
         flex-direction: column;
         gap: 20px;
-    }
+    }}
 
     .cart-left, .cart-right {
         flex: 100%;
@@ -202,7 +223,7 @@ body, input, button, select, textarea {
     .cart-item {
         flex-direction: column;
         align-items: flex-start;
-        gap: 15px;
+        gap: 10px;
         position: relative;
     }
 
@@ -233,10 +254,77 @@ body, input, button, select, textarea {
         gap: 12px;
     }
 
-    .order-summary-box {
-        position: static;
-        padding: 20px;
-    }
+/* 📌 اصل سمری باکس کا اسٹکی لاجک */
+.order-summary-box {
+    position: -webkit-sticky; /* پرانے براؤزرز کے لیے */
+    position: sticky !important;
+    top: 100px !important; /* اسکرین کے اوپر سے ۲۰ پکسل نیچے چپکا رہے گا */
+    z-index: 100;
+    padding: 20px;
 }
 
 
+/* 🔒 بالکل الگ تھلگ اسٹائل جو پیج خراب نہیں کرے گا */
+.summary-payment-box-unique {
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+    text-align: left !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.payment-label-unique {
+    display: block !important;
+    font-size: 15px !important;
+    color: black !important;
+    font-weight: 600 !important;
+    margin-bottom: 6px !important;
+    text-transform: uppercase !important;
+}
+
+.payment-select-unique {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 6px !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    background-color: #fff !important;
+    color: #333 !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+    display: block !important;
+}
+
+.payment-select-unique:focus {
+    border-color: #2e7d32 !important;
+    outline: none !important;
+}
+/* 📦 دونوں بٹنز کا مین کنٹینر */
+.checkout-buttons-wrapper {
+    width: 80%;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+    flex-direction: row; /* بٹنز کو اوپر نیچے رکھنے کے لیے */
+    gap: 5px; /* دونوں بٹنز کے درمیان فاصلہ */
+}
+
+/* 🟢 واٹس ایپ بٹن کا خاص اسٹائل */
+.whatsapp-btn {
+    background-color: #25D366 !important; /* واٹس ایپ کا آفیشل ہرا رنگ */
+    border: 1px solid #25D366 !important;
+    color: #ffffff !important;
+}
+.whatsapp-btn i {
+    font-size: 18px; /* آئیکن کا سائز */
+    margin-right: 8px; /* ٹیکسٹ اور آئیکن کے درمیان فاصلہ */
+    vertical-align: middle;
+}
+/* جب ماؤس واٹس ایپ بٹن پر جائے */
+.whatsapp-btn:hover {
+    background-color: #128C7E !important; /* گہرا ہرا رنگ */
+    border-color: #128C7E !important;
+}

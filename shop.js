@@ -119,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // اگر 'all' کلک ہوا ہے یا پروڈکٹ کی کیٹیگری بٹن سے میچ کر گئی ہے
                 if (selectedFilter === "all" || currentProductCat === selectedFilter) {
-                    // شاپ پیج کی سی ایس ایس گرڈ کے لیے 'flex' یا 'block' کے بجائے 'inline-block' یا ڈیفالٹ رکھیں
                     product.style.display = ""; 
                 } else {
                     product.style.display = "none"; // باقیوں کو چھپا دو
@@ -127,8 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
-}); // پروڈکٹ کا ڈیٹا ایٹریبیوٹ پکڑو اور اسے بھی چھوٹے حروف میں بدل دو
-    
+});
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -177,4 +175,19 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
+    // ==========================================================================
+    // 🌟 🚀 ہوم پیج سے آنے والی کیٹیگری کو آٹو فلٹر کرنے کا نیا کوڈ (یہاں سیٹ کر دیا)
+    // ==========================================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryFromUrl = urlParams.get('category');
+
+    if (categoryFromUrl) {
+        const targetButton = document.querySelector(`.filter-btn[data-filter="${categoryFromUrl}"]`);
+        if (targetButton) {
+            setTimeout(() => {
+                targetButton.click();
+            }, 100); // ہلکا سا وقفہ تاکہ بٹنز ریڈی ہو جائیں
+        }
+    }
 });

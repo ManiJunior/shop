@@ -34,7 +34,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    padding-left: 4px;
+    
 }
 
 .header-top {
@@ -47,10 +47,12 @@ body {
 /* لوگو امیج کا سٹائل */
 /* 🌟 شاپ اور مین پیج دونوں کے لیے سیف لوگو ڈیزائن */
 .brand-logo-img {
-    height: 40px;
+    height: 50px;
     width: auto;
     object-fit: contain; /* تصویر کو کٹنے سے بچائے گا */
-    margin-left: 0;      /* نیگیٹو مارجن زیرو کر دیں تاکہ کسی بھی پیج پر باہر نہ بھاگے */
+    margin-left: 0;
+    opacity: 1;
+      /* نیگیٹو مارجن زیرو کر دیں تاکہ کسی بھی پیج پر باہر نہ بھاگے */
 }
 
 .logo-area {
@@ -674,4 +676,115 @@ body {
 
 .snackbar-btn:hover {
     background-color: #1b5e20;
+}
+
+/* ==========================================================================
+   🌱 سمپل اور پروفیشنل فوٹر ڈیزائن
+   ========================================================================== */
+.site-footer {
+    background-color: #141414; /* خوبصورت آف بلیک رنگ */
+    color: #ffffff;
+    font-family: sans-serif;
+    padding: 40px 20px 20px 20px;
+    margin-top: 50px; /* اوپر والے مواد سے تھوڑا فاصلہ */
+    direction: ltr;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* موبائل پر ایک کالم */
+    gap: 30px;
+}
+
+.footer-col h3.footer-logo {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #2e7d32;
+}
+.footer-col h3.footer-logo span {
+    color: #ffffff; /* ہرا رنگ برانڈ نیم کے لیے */
+}
+
+.footer-col p {
+    font-size: 13px;
+    color: #b3b3b3;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.footer-col h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    position: relative;
+    color: #ffffff;
+}
+
+.footer-col ul {
+    list-content: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+    list-style: none;
+}
+
+.footer-col ul li a {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #4caf50; /* ہور کرنے پر ہرا رنگ */
+}
+
+/* سوشل آئیکنز */
+.footer-socials {
+    display: flex;
+    gap: 12px;
+}
+.footer-socials a {
+    color: #ffffff;
+    background: #262626;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.footer-socials a:hover {
+    background: #2e7d32;
+}
+
+/* کانٹیکٹ لسٹ */
+.contact-list li {
+    font-size: 13px;
+    color: #b3b3b3;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+/* 💻 بڑی اسکرین (PC) کے لیے سیٹنگ */
+@media (min-width: 768px) {
+    .footer-container {
+        grid-template-columns: repeat(4, 1fr); /* ۴ کالمز ایک لائن میں */
+        gap: 20px;
+    }
+    
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }

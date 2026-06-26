@@ -15,7 +15,7 @@
     <header class="main-header">
     <div class="header-top">
         <div class="logo-area">
-            <img src="Pictures/logo.jpeg" alt="Brand Logo" class="brand-logo-img">
+            <img src="Pictures/logo.png" alt="Brand Logo" class="brand-logo-img">
             
         </div>
         <div class="header-icons">
@@ -44,7 +44,7 @@
             
             <!-- کارٹ کی لسٹ (جاوا اسکرپٹ کے لیے) -->
             <div id="cartItemsList" class="cart-items-list">
-                <div class="cart-item" data-id="1">
+                <!-- <div class="cart-item" data-id="1">
                     <img src="images/nativo.jpg" alt="Nativo" class="item-img">
                     <div class="item-details">
                         <h3>Nativo Premium Seeds (1kg)</h3>
@@ -57,24 +57,55 @@
                     </div>
                     <div class="item-price">Rs 4,500</div>
                     <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
-                </div>
+                </div> -->
             </div>
 
             <!-- کسٹمر انفارمیشن فارم -->
             <div class="shipping-form-section">
-                <h3>Shipping Information Form</h3>
-                <form id="checkoutForm">
-                    <div class="form-group-row">
-                        <input type="text" placeholder="پورا نام (Full Name)" required>
-                        <input type="text" placeholder="موبائل نمبر (Mobile Number)" required>
-                    </div>
-                    <div class="form-group-row">
-                        <input type="text" placeholder="شہر (City)" required>
-                        <input type="text" placeholder="مکمل پتہ (Full Address)" required>
-                    </div>
-                </form>
-                <p class="cod-notice">ادائیگی صرف کیش آن ڈلیوری ہوگی</p>
-            </div>
+    <h3>Shipping Information Form</h3>
+    <form id="checkoutForm">
+        <!-- پہلی رو: نام اور موبائل نمبر -->
+        <div class="form-group-row">
+            <input type="text" id="custName" placeholder="Full Name" required>
+            <input type="text" id="custPhone" placeholder="Mobile Number" required>
+        </div>
+
+        <!-- دوسری رو: صوبہ اور ضلع -->
+        <div class="form-group-row">
+            <select id="custProvince" required>
+                <option value="">Select Province</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Sindh">Sindh</option>
+                <option value="KPK">Khyber Pakhtunkhwa</option>
+                <option value="Balochistan">Balochistan</option>
+                <option value="Islamabad">Islamabad</option>
+            </select>
+
+            <select id="custDistrict" required disabled>
+                <option value="">Select District</option>
+            </select>
+        </div>
+
+        <!-- 📝 اگر ضلع لسٹ میں نہ ہو تو یہ فیلڈ خود بخود ظاہر ہوگی -->
+        <div class="form-group-row" id="otherDistrictWrapper" style="display: none;">
+            <input type="text" id="custDistrictOther" placeholder="Type District Name">
+        </div>
+
+        <!-- تیسری رو: شہر اور مکمل پتہ -->
+        <div class="form-group-row">
+            <select id="custCity" required disabled>
+                <option value="">Select City</option>
+            </select>
+            
+            <input type="text" id="custAddress" placeholder="Full Address" required>
+        </div>
+
+        <!-- 📝 اگر شہر لسٹ میں نہ ہو تو یہ فیلڈ خود بخود ظاہر ہوگی -->
+        <div class="form-group-row" id="otherCityWrapper" style="display: none;">
+            <input type="text" id="custCityOther" placeholder="Type City Name">
+        </div>
+    </form>
+</div>
         </div>
 
         <!-- ۲۔ دایاں حصہ: بل کی تفصیل (35% اسٹکی پینل) -->
@@ -94,12 +125,29 @@
                     <span>Grand Total:</span>
                     <span id="grandTotalPrice">Rs 4,700</span>
                 </div>
-                <button type="submit" form="checkoutForm" class="finalize-btn">
-                    آرڈر فائنل کریں <br> <small>(Place Order)</small>
-                </button>
+                <!-- 💳 بالکل سیف پیمنٹ میتھڈ ڈراپ ڈاؤن -->
+                <div class="summary-payment-box-unique">
+<label class="payment-label-unique">Payment Method:</label>
+<select name="payMethod" class="payment-select-unique" required>
+  <option value="COD">💵 Cash on Delivery (COD)</option>
+  <option value="EasyPaisa">📱 EasyPaisa</option>
+  <option value="JazzCash">📱 JazzCash</option>
+  <option value="HBL">🏛️ HBL Bank</option> </select>
+</div>
+
+<div class="checkout-buttons-wrapper"> 
+  <button type="button" id="whatsappSubmitBtn" class="finalize-btn whatsapp-btn" onclick="processOrder('whatsapp')">
+      Order on WhatsApp
+  </button>   
+  
+  <button type="button" id="placeOrderSubmitBtn" class="finalize-btn" style="background-color: #28a745; color: white;" onclick="processOrder('place_order')">
+      Place Your Order
+  </button>
+</div>
+    
+                </div>
             </div>
         </div>
-
     </div>
 
     <!-- 📱 موبائل کے لیے باٹم نیویگیشن بار -->
@@ -108,7 +156,7 @@
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
-        <a href="shop.html" class="nav-item">
+        <a href="shop.php" class="nav-item">
             <i class="fas fa-shopping-bag"></i>
             <span>Shop</span>
         </a>
@@ -126,6 +174,59 @@
             <span>Account</span>
         </a>
     </nav>
+    <footer class="site-footer">
+    <div class="footer-container">
+        
+        <!-- کالم ۱: برانڈ کا نام اور سوشل لنکس -->
+        <div class="footer-col about-col">
+            <h3 class="footer-logo">Green<span>Hub</span></h3>
+            <p>Your trusted partner for premium seeds, pesticides, and household gardening solutions.</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-x"></i></a>
+                <a href="https://wa.me/923056416902" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <!-- کالم ۲: ضروری لنکس -->
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop All</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- کالم ۳: کسٹمر پالیسیز -->
+        <div class="footer-col">
+            <h4>Our Policies</h4>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Return & Refund</a></li>
+                <li><a href="#">Shipping Info</a></li>
+            </ul>
+        </div>
+
+        <!-- کالم ۴: رابطہ -->
+        <div class="footer-col">
+            <h4>Contact Info</h4>
+            <ul class="contact-list">
+                <li><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</li>
+                <li><i class="fas fa-phone-alt"></i> +92 305 6416902</li>
+                <li><i class="fas fa-envelope"></i> info@greenhub.com</li>
+                <p>&copy; 2026 GreenHub. All Rights Reserved.</p>
+            </ul>
+        </div>
+
+    </div>
+    <!-- <i class="fas fa-truck"></i> -->
+</footer>
 
     <!-- 📜 جاوا اسکرپٹ فائل کا لنک -->
      

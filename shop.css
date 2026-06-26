@@ -243,7 +243,7 @@ body {
 .category-filter-bar {
     direction: ltr;
     display: flex;
-    gap: 10px;
+    gap: 5px;
     overflow-x: auto;
     padding: 10px 2px 15px 2px; /* اوپر کا پیڈنگ تھوڑا بڑھایا ہے تاکہ اسکرول میں پیارا لگے */
     scrollbar-width: none;
@@ -264,9 +264,9 @@ body {
     background-color: #f8f9f9;
     color: #5d6d7e;
     border: 1px solid #ebedef;
-    padding: 8px 18px;
+    padding: 5px 12px;
     border-radius: 20px;
-    font-size: 14px;
+    font-size: 10px;
     font-family: inherit;
     font-weight: 600;
     cursor: pointer;
@@ -288,6 +288,7 @@ body {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 5px;
+    direction: ltr;
 }
 
 @media (max-width: 768px) {

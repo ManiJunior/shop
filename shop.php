@@ -1,3 +1,11 @@
+<?php
+// ۱۔ ڈیٹا بیس کنکشن فائل شامل کریں
+include 'db_connect.php';
+
+// ۲۔ ڈیٹا بیس سے تمام پروڈکٹس نکالنے کی کیوری
+$query = "SELECT * FROM products";
+$result = $conn->query($query);
+?>
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
@@ -102,23 +110,45 @@
            ۴. پروڈکٹ گرڈ (3D فلوٹنگ لک)
            ========================================== -->
         <section class="products-grid">
-            <!-- پروڈکٹ کارڈ -->
-            <a href="product-detail.html?id=nativo-pesticide" class="product-card" data-id="1" data-cat="Pesticides">
+    <?php
+    // ۳۔ چیک کریں کہ ڈیٹا بیس میں پروڈکٹس ہیں یا نہیں
+    if ($result && $result->num_rows > 0) {
+        // ۴۔ جبکہ (while) ڈیٹا بیس میں پروڈکٹس ملتی رہیں، یہ لوپ چلتا رہے
+        while ($row = $result->fetch_assoc()) {
+            ?>
+            <a href="product-detail.php?id=<?php echo $row['product_id']; ?>" 
+               class="product-card" 
+               data-id="<?php echo $row['product_id']; ?>" 
+               data-cat="<?php echo $row['category']; ?>">
+               
                 <div class="img-box">
-                    <img src="Pictures/k1.jpg" alt="Nativo">
+                    <img src="Pictures/<?php echo $row['product_image']; ?>" alt="<?php echo $row['product_name']; ?>">
                 </div>
-                <h4 class="product-name">Nativo Pesticide is one of the most and best sell product you have to buy this product</h4>
+                
+                <h4 class="product-name"><?php echo $row['product_name']; ?></h4>
+                
                 <div class="product-footer">
-                    <!-- قیمتوں کا باکس -->
                     <div class="price-box">
-                        <span class="product-old-price">RS 1,549</span>
-                        <span class="product-price">RS 1,250</span>
+                        <span class="product-old-price">RS <?php echo number_format($row['old_price']); ?></span>
+                        <span class="product-price">RS <?php echo number_format($row['current_price']); ?></span>
                     </div>
-                    <!-- کارٹ بٹن -->
-                    <button class="minimal-add-btn"></button>
+
+                    <?php if ($row['stock_status'] == 'In Stock') { ?>
+                        <button class="minimal-add-btn"></button>
+                    <?php } else { ?>
+                        <span style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 11px; white-space: nowrap;">Out of Stock</span>
+                    <?php } ?>
+
                 </div>
             </a>
-        </section>
+            <?php
+        }
+    } else {
+        // اگر ڈیٹا بیس بالکل خالی ہو
+        echo "<p style='grid-column: 1/-1; text-align: center; padding: 20px;'>فی الحال کوئی پروڈکٹ دستیاب نہیں ہے۔</p>";
+    }
+    ?>
+</section>
             
 
 
@@ -168,7 +198,7 @@
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
-        <a href="shop.html" class="nav-item">
+        <a href="shop.php" class="nav-item">
             <i class="fas fa-shopping-bag"></i>
             <span>Shop</span>
         </a>
